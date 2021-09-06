@@ -1,9 +1,9 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 const Context = createContext({
-    parasites: [],
-    setLimit: null,
-    setOffset: null,
+  parasites: [],
+  setLimit: null,
+  setOffset: null,
 });
 
 export default Context;

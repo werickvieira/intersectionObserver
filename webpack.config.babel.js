@@ -3,8 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const config = {
   entry: './src/index.js',
-  resolve: { 
-    extensions: ["*", ".js", ".jsx"] 
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
   },
   output: {
     filename: 'bundle.js?[fullhash]',
@@ -16,34 +16,36 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
-        use: [{
-          loader: 'babel-loader',
-        }],
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
-          "style-loader",
+          'style-loader',
           // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // Compiles Sass to CSS
-          "sass-loader",
+          'sass-loader',
         ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      template: './index.html',
       minify: {
         removeComments: true,
       },
       inject: true,
-    })
+    }),
   ],
   devtool: 'inline-source-map',
-  mode:'development',
+  mode: 'development',
   devServer: {
     port: 8000,
     liveReload: true,
@@ -62,7 +64,7 @@ const config = {
     static: {
       directory: path.resolve(__dirname, ''),
       staticOptions: {},
-      publicPath: "/public/",
+      publicPath: '/public/',
       serveIndex: true,
       watch: true,
     },

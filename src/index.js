@@ -4,8 +4,8 @@ import App from './App';
 import './index.scss';
 
 render(
-	<StrictMode>
-		<App />
-	</StrictMode>,
-	document.getElementById('root')
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById('root')
 );

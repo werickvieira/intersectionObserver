@@ -5,7 +5,7 @@ import Wrapper from './Wrapper.js';
 import Observer from './Observer.js';
 import Loading from './Loader.js';
 import Container from '@material-ui/core/Container';
-import "./App.scss";
+import './App.scss';
 
 const App = () => {
   const [parasites, setParasites] = useState([]);
@@ -14,41 +14,42 @@ const App = () => {
   const [element, setElement] = useState(null);
   const [loading, setLoading] = useState(false);
   const [last, setLast] = useState(false);
-  
+
   useEffect(() => {
     if (!last) {
       setLoading(true);
-      Fetcher(limit, offset)
-        .then(({ dados, links }) => {
-          const isEnd = links[1].rel.toLowerCase() === "next"
-          if (!isEnd) {
-            setLast(true);
-            setLoading(false);
-            return 
-          }
-          setTimeout(()=> {
-            const merged = [...parasites, ...dados];
-            setParasites(merged)
-            setLoading(false);
-          }, 500)
-        })
+      Fetcher(limit, offset).then(({ dados, links }) => {
+        const isEnd = links[1].rel.toLowerCase() === 'next';
+        if (!isEnd) {
+          setLast(true);
+          setLoading(false);
+          return;
+        }
+        setTimeout(() => {
+          const merged = [...parasites, ...dados];
+          setParasites(merged);
+          setLoading(false);
+        }, 500);
+      });
     }
-  }, [limit, offset])
+  }, [limit, offset]);
 
   return (
-    <Context.Provider value={{ 
-      parasites,
-      element,
-      loading, 
-      modifiers: {
-        setLimit,
-        setOffset,
-        setElement,
-      } 
-    }}>
+    <Context.Provider
+      value={{
+        parasites,
+        element,
+        loading,
+        modifiers: {
+          setLimit,
+          setOffset,
+          setElement,
+        },
+      }}
+    >
       <div className="main">
         <Loading />
-        <Container >
+        <Container>
           <Wrapper />
           <Observer />
         </Container>
@@ -57,6 +58,5 @@ const App = () => {
   );
 };
 
-
-
-export default App;9
+export default App;
+9;
